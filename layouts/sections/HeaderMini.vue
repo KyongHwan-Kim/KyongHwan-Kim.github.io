@@ -28,42 +28,18 @@
             <li class="nav-item" text v-bind="attrs" v-on="on">
               <n-link class="nav-link" nuxt to="/profile"> Profile </n-link>
             </li>
-            <v-menu open-on-hover offset-y>
-              <template v-slot:activator="{ on, attrs }">
-                <li class="nav-item" text v-bind="attrs" v-on="on">
-                  <n-link class="nav-link" nuxt to="/tech"> Tech </n-link>
-                </li>
-              </template>
-              <v-list nav>
-                <v-list-item v-for="(item, index) in techItems" :key="index">
-                  <v-list-item-title>{{ item.title }}</v-list-item-title>
-                </v-list-item>
-              </v-list>
-            </v-menu>
-            <v-menu open-on-hover offset-y>
-              <template v-slot:activator="{ on, attrs }">
-                <li class="nav-item" text v-bind="attrs" v-on="on">
-                  <n-link class="nav-link" nuxt to="/contest"> Contest </n-link>
-                </li>
-              </template>
-              <v-list>
-                <v-list-item v-for="(item, index) in contestItems" :key="index">
-                  <v-list-item-title>{{ item.title }}</v-list-item-title>
-                </v-list-item>
-              </v-list>
-            </v-menu>
-            <v-menu open-on-hover offset-y>
-              <template v-slot:activator="{ on, attrs }">
-                <li class="nav-item" text v-bind="attrs" v-on="on">
-                  <n-link class="nav-link" nuxt to="/project"> Project </n-link>
-                </li>
-              </template>
-              <v-list>
-                <v-list-item v-for="(item, index) in projectItems" :key="index">
-                  <v-list-item-title>{{ item.title }}</v-list-item-title>
-                </v-list-item>
-              </v-list>
-            </v-menu>
+            <li class="nav-item" text v-bind="attrs" v-on="on">
+              <n-link class="nav-link" nuxt to="/tech"> Tech </n-link>
+            </li>
+
+            <li class="nav-item" text v-bind="attrs" v-on="on">
+              <n-link class="nav-link" nuxt to="/contest"> Contest </n-link>
+            </li>
+
+            <li class="nav-item" text v-bind="attrs" v-on="on">
+              <n-link class="nav-link" nuxt to="/project"> Project </n-link>
+            </li>
+
             <v-menu open-on-hover offset-y>
               <template v-slot:activator="{ on, attrs }">
                 <li class="nav-item" text v-bind="attrs" v-on="on">
@@ -72,12 +48,24 @@
                   </n-link>
                 </li>
               </template>
-              <v-list>
+              <v-list style="background-color:rgba(0, 0, 0, 0.3); ">
                 <v-list-item
                   v-for="(item, index) in activityItems"
                   :key="index"
                 >
-                  <v-list-item-title>{{ item.title }}</v-list-item-title>
+                  <n-link
+                    class="nav-link white--text"
+                    style="text-decoration-line: none; align-items: center;"
+                    nuxt
+                    :to="item.url"
+                  >
+                    {{ item.title }}
+                  </n-link>
+                  <!-- <v-list-item-title
+                    style="text-align: center;"
+                    class="white--text"
+                    >{{ item.title }}</v-list-item-title
+                  > -->
                 </v-list-item>
               </v-list>
             </v-menu>
@@ -89,9 +77,16 @@
                   </n-link>
                 </li>
               </template>
-              <v-list>
+              <v-list style="background-color:rgba(0, 0, 0, 0.3);">
                 <v-list-item v-for="(item, index) in lifeItems" :key="index">
-                  <v-list-item-title>{{ item.title }}</v-list-item-title>
+                  <n-link
+                    class="nav-link white--text"
+                    style="text-decoration-line: none;"
+                    nuxt
+                    :to="item.url"
+                  >
+                    {{ item.title }}
+                  </n-link>
                 </v-list-item>
               </v-list>
             </v-menu>
@@ -125,7 +120,18 @@ export default {
   name: "Header1",
   data() {
     return {
-      isActive: false
+      isActive: false,
+      activityItems: [
+        { title: "Club", url: "/club" },
+        { title: "Publish", url: "/publish" }
+      ],
+      lifeItems: [
+        { title: "Daily", url: "/daily" },
+        { title: "Review", url: "/review" },
+        { title: "Hobby", url: "/hobby" }
+      ],
+      attrs: "",
+      on: ""
     };
   },
   methods: {

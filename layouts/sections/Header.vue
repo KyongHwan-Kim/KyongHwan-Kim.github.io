@@ -119,13 +119,15 @@ export default {
       isActive: false,
       activityItems: [
         { title: "Club", url: "/club" },
-        { title: "Activity", url: "/activity" }
+        { title: "Publish", url: "/publish" }
       ],
       lifeItems: [
         { title: "Daily", url: "/daily" },
-        { title: "Review", url: "/" },
-        { title: "Hobby", url: "/" }
-      ]
+        { title: "Review", url: "/review" },
+        { title: "Hobby", url: "/hobby" }
+      ],
+      attrs: "",
+      on: ""
     };
   },
   methods: {
