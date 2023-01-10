@@ -14,7 +14,7 @@
     ----------------------------------------------- -->
     <BannerText />
     <Banner1 />
-    <Banner2 />
+    <!-- <Banner2 /> -->
     <!-- -----------------------------------------------
     ./ Banner
     ----------------------------------------------- -->
@@ -124,7 +124,7 @@ export default {
     Blog: () => import("@/components/custom/blogs/Blog"),
     C2a1: () => import("@/components/custom/c2a/C2a1"),
     C2a2: () => import("@/components/custom/c2a/C2a2"),
-    Contact: () => import("@/components/custom/contact/Contact"),
-  },
+    Contact: () => import("@/components/custom/contact/Contact")
+  }
 };
 </script>
