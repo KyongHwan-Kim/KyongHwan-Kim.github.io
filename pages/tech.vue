@@ -1,5 +1,28 @@
 <template>
   <div>
+    <v-navigation-drawer class="deep-purple accent-4" fixed>
+      <div v-for="(item, idx) in items" :key="idx">
+        <h2>{{ item.name }}</h2>
+        <div v-for="(subItem, idx) in item.children" :key="idx">
+          <h3>{{ subItem.name }}</h3>
+          <div v-for="(subSubItem, idx) in subItem.children" :key="idx">
+            <h4>{{ subSubItem.name }}</h4>
+          </div>
+        </div>
+      </div>
+      <!-- <v-treeview dense hoverable open-all :items="items"></v-treeview> -->
+      <template v-slot:append>
+        <div class="pa-2">
+          <v-btn block>
+            Logout
+          </v-btn>
+        </div>
+      </template>
+    </v-navigation-drawer>
+    <div class="markdown-body">
+      <h1>Hello World</h1>
+      <h2>안</h2>
+    </div>
     <!-- -----------------------------------------------
     Header
     ----------------------------------------------- -->
@@ -90,11 +113,16 @@
 </template>
 
 <script>
+import techList from "@/data/techList.json";
+// import techContent from "@/data/testContent.json";
 export default {
   name: "AllCustomComponents",
 
   data() {
-    return {};
+    return {
+      items: techList
+      // page: techContent
+    };
   },
   components: {
     HeaderText: () => import("@/components/custom/header/HeaderText"),
@@ -128,3 +156,8 @@ export default {
   }
 };
 </script>
+<style scoped>
+::v-deep .v-treeview {
+  font-family: "KIMM_Bold";
+}
+</style>
