@@ -1,11 +1,11 @@
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
-  ssr: true,
+  ssr: false,
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     titleTemplate: "%s - Nuxt js UI Kit",
-    title: "NuxtJs UI kit | Free UI kit built with Vuetifyy",
+    title: "비버의 개발 일지 | 환영합니다",
     htmlAttrs: {
       lang: "en"
     },

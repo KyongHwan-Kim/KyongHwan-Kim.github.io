@@ -20,72 +20,30 @@
           @click="isActive = !isActive"
         >
           <ul class="navbar-nav">
-            <li class="nav-item" text v-bind="attrs" v-on="on">
+            <li class="nav-item" text>
               <n-link class="nav-link" nuxt to="/profile"> Profile </n-link>
             </li>
-            <li class="nav-item" text v-bind="attrs" v-on="on">
+            <li class="nav-item" text>
               <n-link class="nav-link" nuxt to="/tech"> Tech </n-link>
             </li>
 
-            <li class="nav-item" text v-bind="attrs" v-on="on">
+            <li class="nav-item" text>
               <n-link class="nav-link" nuxt to="/contest"> Contest </n-link>
             </li>
 
-            <li class="nav-item" text v-bind="attrs" v-on="on">
+            <li class="nav-item" text>
               <n-link class="nav-link" nuxt to="/project"> Project </n-link>
             </li>
-
-            <v-menu open-on-hover offset-y>
-              <template v-slot:activator="{ on, attrs }">
-                <li class="nav-item" text v-bind="attrs" v-on="on">
-                  <n-link class="nav-link" nuxt to="/activity">
-                    Activity
-                  </n-link>
-                </li>
-              </template>
-              <v-list style="background-color:rgba(0, 0, 0, 0.3); ">
-                <v-list-item
-                  v-for="(item, index) in activityItems"
-                  :key="index"
-                >
-                  <n-link
-                    class="nav-link white--text"
-                    style="text-decoration-line: none; align-items: center;"
-                    nuxt
-                    :to="item.url"
-                  >
-                    {{ item.title }}
-                  </n-link>
-                  <!-- <v-list-item-title
-                    style="text-align: center;"
-                    class="white--text"
-                    >{{ item.title }}</v-list-item-title
-                  > -->
-                </v-list-item>
-              </v-list>
-            </v-menu>
-            <v-menu open-on-hover offset-y>
-              <template v-slot:activator="{ on, attrs }">
-                <li class="nav-item" text v-bind="attrs" v-on="on">
-                  <n-link class="nav-link" nuxt to="/basic-components">
-                    Life
-                  </n-link>
-                </li>
-              </template>
-              <v-list style="background-color:rgba(0, 0, 0, 0.3);">
-                <v-list-item v-for="(item, index) in lifeItems" :key="index">
-                  <n-link
-                    class="nav-link white--text"
-                    style="text-decoration-line: none;"
-                    nuxt
-                    :to="item.url"
-                  >
-                    {{ item.title }}
-                  </n-link>
-                </v-list-item>
-              </v-list>
-            </v-menu>
-
+            <li class="nav-item" text>
+              <n-link class="nav-link" nuxt to="/activity">
+                Activity
+              </n-link>
+            </li>
+            <li class="nav-item" text>
+              <n-link class="nav-link" nuxt to="/basic-components">
+                Life
+              </n-link>
+            </li>
             <li>
               <!-- login-regiter -->
               <v-btn
