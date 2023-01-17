@@ -5,6 +5,7 @@
     ----------------------------------------------- -->
     <Banner />
     <Divider :title="divider.title" :subtitle="divider.subtitle" />
+    <Blog />
     <!-- -----------------------------------------------
     ./ Banner
     ----------------------------------------------- -->
@@ -51,6 +52,7 @@ export default {
   components: {
     Banner: () => import("@/layouts/sections/Banner"),
     Divider: () => import("@/layouts/sections/Divider"),
+    Blog: () => import("@/layouts/sections/Blog"),
     ComingSoon: () => import("@/components/shared/coming-soon/ComingSoon"),
     AllCustomComponents: () => import("@/components/custom/AllCustomComponents")
   }

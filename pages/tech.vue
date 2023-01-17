@@ -19,9 +19,8 @@
         </div>
       </template>
     </v-navigation-drawer>
-    <div class="markdown-body">
-      <h1>Hello World</h1>
-      <h2>안</h2>
+    <div id="md-html" class="markdown-body">
+      <techMd />
     </div>
     <!-- -----------------------------------------------
     Header
@@ -114,10 +113,9 @@
 
 <script>
 import techList from "@/data/techList.json";
-// import techContent from "@/data/testContent.json";
+
 export default {
   name: "AllCustomComponents",
-
   data() {
     return {
       items: techList
