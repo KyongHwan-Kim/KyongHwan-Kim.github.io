@@ -11,10 +11,8 @@
         <v-col cols="12" sm="12" md="12" lg="3" class="px-xs-0">
           <h4 class="font-weight-regular font-18">Profile</h4>
           <p class="mt-10">Age : 24, Male</p>
-          <p class="mt-5">
-            Edu :
-          </p>
-          <p style="font-size: 13px;">
+          <p class="mt-5">Edu :</p>
+          <p style="font-size: 13px">
             Donig Bachelor of Science <br />in Electronics and Informaion
             Engineering <br />at Sejong University
           </p>
@@ -23,18 +21,13 @@
         <!-- -----------------------------------------------
         Second Column
       ----------------------------------------------- -->
-        <v-col cols="12" sm="12" md="12" lg="3" class="px-xs-0">
-          <h4 class="font-weight-regular font-18">Phone</h4>
-          <p class="mt-10 mb-0">+82 010-5761-1989</p>
-        </v-col>
+
         <!-- -----------------------------------------------
         Third Column
       ----------------------------------------------- -->
         <v-col cols="12" sm="12" md="12" lg="3" class="px-xs-0">
           <h4 class="font-weight-regular font-18">Email</h4>
-          <p class="mt-10 mb-0">
-            Gmail : kyounghwan1989@gmail.com
-          </p>
+          <p class="mt-10 mb-0">Gmail : kyounghwan1989@gmail.com</p>
           <p class="mt-10 mb-0">Naver : <br />dolkys123@naver.com</p>
         </v-col>
         <!-- -----------------------------------------------
@@ -58,9 +51,7 @@
       </v-row>
       <div class="footer-bottom-bar font-14">
         <div class="d-block d-md-flex align-center">
-          <p>
-            All Rights Reserved by kyounghwan-kim
-          </p>
+          <p>All Rights Reserved by kyounghwan-kim</p>
           <!-- <div class="ml-auto">
             <div class="d-flex align-center">
               <a href="/" class="link px-4">Terms of Use</a>
@@ -82,10 +73,10 @@ export default {
   name: "Footer",
   data() {
     return {
-      data: []
+      data: [],
     };
   },
-  components: {}
+  components: {},
 };
 </script>
  

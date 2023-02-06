@@ -1,124 +1,35 @@
 <template>
   <div>
-    <v-navigation-drawer class="deep-purple accent-4" fixed>
-      <div v-for="(item, idx) in items" :key="idx">
-        <h2>{{ item.name }}</h2>
-        <div v-for="(subItem, idx) in item.children" :key="idx">
-          <h3>{{ subItem.name }}</h3>
-          <div v-for="(subSubItem, idx) in subItem.children" :key="idx">
-            <h4>{{ subSubItem.name }}</h4>
-          </div>
-        </div>
-      </div>
-      <!-- <v-treeview dense hoverable open-all :items="items"></v-treeview> -->
-      <template v-slot:append>
-        <div class="pa-2">
-          <v-btn block>
-            Logout
-          </v-btn>
-        </div>
-      </template>
-    </v-navigation-drawer>
     <div id="md-html" class="markdown-body">
       <techMd />
     </div>
-    <!-- -----------------------------------------------
-    Header
-    ----------------------------------------------- -->
-    <HeaderText />
-    <Header1 />
-    <Header2 />
-    <!-- -----------------------------------------------
-    ./ Header
-    ----------------------------------------------- -->
-    <!-- -----------------------------------------------
-    Banner
-    ----------------------------------------------- -->
-    <BannerText />
-    <Banner1 />
-    <!-- <Banner2 /> -->
-    <!-- -----------------------------------------------
-    ./ Banner
-    ----------------------------------------------- -->
-    <!-- -----------------------------------------------
-    Form Banner
-    ----------------------------------------------- -->
-    <FormBannerText />
-    <FormBanner1 />
-    <!-- -----------------------------------------------
-    ./ Form Banner
-    ----------------------------------------------- -->
-    <!-- -----------------------------------------------
-    Features
-    ----------------------------------------------- -->
-    <FeatureText />
-    <Feature1 />
-    <Feature2 />
-    <Feature3 />
-    <!-- -----------------------------------------------
-    ./ Features
-    ----------------------------------------------- -->
-    <!-- -----------------------------------------------
-    Portfolio
-    ----------------------------------------------- -->
-    <PortfolioText />
-    <Portfolio />
-    <!-- -----------------------------------------------
-    ./ Portfolio
-    ----------------------------------------------- -->
-    <!-- -----------------------------------------------
-    Pricing
-    ----------------------------------------------- -->
-    <PricingText />
-    <Pricing />
-    <!-- -----------------------------------------------
-    ./ Pricing
-    ----------------------------------------------- -->
-    <!-- -----------------------------------------------
-    Team
-    ----------------------------------------------- -->
-    <TeamText />
-    <Team />
-    <!-- -----------------------------------------------
-    ./ Team
-    ----------------------------------------------- -->
-    <!-- -----------------------------------------------
-    Testimonial
-    ----------------------------------------------- -->
-    <TestimonialText />
-    <Testimonial />
-    <!-- -----------------------------------------------
-    ./ Testimonial
-    ----------------------------------------------- -->
-    <Blog />
-    <!-- -----------------------------------------------
-    C2a
-    ----------------------------------------------- -->
-    <C2aText />
-    <C2a1 />
-    <C2a2 />
-    <!-- -----------------------------------------------
-    ./ C2a
-    ----------------------------------------------- -->
-    <!-- -----------------------------------------------
-    Contact Text
-    ----------------------------------------------- -->
-    <ContactText />
-    <Contact />
-    <!-- -----------------------------------------------
-    ./ Contact Text
-    ----------------------------------------------- -->
+    <v-container>
+      <BannerText />
+      <Banner1 />
+      <FormBannerText />
+      <FormBanner1 />
+
+      <FeatureText />
+      <Feature1 />
+      <Feature2 />
+      <Feature3 />
+      <PortfolioText />
+      <Portfolio />
+      <ContactText />
+      <Contact />
+    </v-container>
   </div>
 </template>
 
 <script>
 import techList from "@/data/techList.json";
+import Header from "../layouts/sections/Header.vue";
 
 export default {
   name: "AllCustomComponents",
   data() {
     return {
-      items: techList
+      items: techList,
       // page: techContent
     };
   },
@@ -150,12 +61,20 @@ export default {
     Blog: () => import("@/components/custom/blogs/Blog"),
     C2a1: () => import("@/components/custom/c2a/C2a1"),
     C2a2: () => import("@/components/custom/c2a/C2a2"),
-    Contact: () => import("@/components/custom/contact/Contact")
-  }
+    Contact: () => import("@/components/custom/contact/Contact"),
+  },
 };
+Header;
 </script>
 <style scoped>
 ::v-deep .v-treeview {
   font-family: "KIMM_Bold";
+}
+::v-deep .v-sheet {
+  position: fixed;
+  top: 20;
+  /* width: 100% */
+  left: 0;
+  right: 0;
 }
 </style>

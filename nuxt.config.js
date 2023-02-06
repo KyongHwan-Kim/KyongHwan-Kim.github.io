@@ -41,8 +41,19 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ["@nuxtjs/proxy"],
-
+  modules: ["@nuxtjs/proxy", "@nuxtjs/axios"],
+  axios: {
+    proxy: true,
+    proxyHeaders: false,
+    credentials: false
+  },
+  proxy: {
+    "/blog/": {
+      target: "https://rss.blog.naver.com",
+      pathRewrite: { "^/blog/": "" }
+    },
+    "/api2/": "http://api.another-website.com"
+  },
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
     customVariables: ["~/assets/scss/variables.scss"],

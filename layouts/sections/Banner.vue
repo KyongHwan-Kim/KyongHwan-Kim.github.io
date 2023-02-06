@@ -12,7 +12,7 @@
           lg="6"
           class="d-flex align-center"
         >
-          <div class="text-center text-md-left">
+          <div class="text-center text-md-left typewriter">
             <h1 class="banner-title font-weight-bold white--text">
               # echo "Hello World!"
             </h1>
@@ -55,7 +55,7 @@ export default {
   data() {
     return {
       width: 0,
-      height: 0
+      height: 0,
     };
   },
   mounted() {
@@ -71,7 +71,37 @@ export default {
     handleResize(event) {
       this.width = window.innerWidth;
       this.height = window.innerHeight;
-    }
-  }
+    },
+  },
 };
 </script>
+<style scoped>
+.typewriter h1 {
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: solid black; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  animation: typing 3.5s steps(21, end), blink-caret 0.75s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: black;
+  }
+}
+</style>

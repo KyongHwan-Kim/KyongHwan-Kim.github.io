@@ -3,18 +3,9 @@
     <!-- -----------------------------------------------
           Start Header
     ----------------------------------------------- -->
-    <v-app-bar
-      app
-      class="app-header position-relative navbar-light header1"
-      flat
-    >
-      <v-container class="py-0 fill-height">
+    <v-app-bar app class="app-header bg-dark header1" flat outlined>
+      <v-container class="py-0 fill-height justify-center">
         <!-- Logo -->
-        <div class="banner-logo">
-          <NLink class="text" nuxt to="/"> 비버의 개발 일지</NLink>
-        </div>
-
-        <v-spacer></v-spacer>
         <v-btn class="d-block d-md-none" text @click="toggleClass()">
           <v-app-bar-nav-icon />
         </v-btn>
@@ -25,77 +16,31 @@
           @click="isActive = !isActive"
         >
           <ul class="navbar-nav">
-            <li class="nav-item" text v-bind="attrs" v-on="on">
+            <li class="nav-item" text>
               <n-link class="nav-link" nuxt to="/profile"> Profile </n-link>
             </li>
-            <li class="nav-item" text v-bind="attrs" v-on="on">
+            <li class="nav-item" text>
               <n-link class="nav-link" nuxt to="/tech"> Tech </n-link>
             </li>
 
-            <li class="nav-item" text v-bind="attrs" v-on="on">
+            <li class="nav-item" text>
               <n-link class="nav-link" nuxt to="/contest"> Contest </n-link>
             </li>
 
-            <li class="nav-item" text v-bind="attrs" v-on="on">
+            <li class="nav-item" text>
               <n-link class="nav-link" nuxt to="/project"> Project </n-link>
             </li>
-
-            <v-menu open-on-hover offset-y>
-              <template v-slot:activator="{ on, attrs }">
-                <li class="nav-item" text v-bind="attrs" v-on="on">
-                  <n-link class="nav-link" nuxt to="/activity">
-                    Activity
-                  </n-link>
-                </li>
-              </template>
-              <v-list style="background-color:rgba(0, 0, 0, 0.3); ">
-                <v-list-item
-                  v-for="(item, index) in activityItems"
-                  :key="index"
-                >
-                  <n-link
-                    class="nav-link white--text"
-                    style="text-decoration-line: none; align-items: center;"
-                    nuxt
-                    :to="item.url"
-                  >
-                    {{ item.title }}
-                  </n-link>
-                  <!-- <v-list-item-title
-                    style="text-align: center;"
-                    class="white--text"
-                    >{{ item.title }}</v-list-item-title
-                  > -->
-                </v-list-item>
-              </v-list>
-            </v-menu>
-            <v-menu open-on-hover offset-y>
-              <template v-slot:activator="{ on, attrs }">
-                <li class="nav-item" text v-bind="attrs" v-on="on">
-                  <n-link class="nav-link" nuxt to="/basic-components">
-                    Life
-                  </n-link>
-                </li>
-              </template>
-              <v-list style="background-color:rgba(0, 0, 0, 0.3);">
-                <v-list-item v-for="(item, index) in lifeItems" :key="index">
-                  <n-link
-                    class="nav-link white--text"
-                    style="text-decoration-line: none;"
-                    nuxt
-                    :to="item.url"
-                  >
-                    {{ item.title }}
-                  </n-link>
-                </v-list-item>
-              </v-list>
-            </v-menu>
-
+            <li class="nav-item" text>
+              <n-link class="nav-link" nuxt to="/activity"> Activity </n-link>
+            </li>
+            <li class="nav-item" text>
+              <n-link class="nav-link" nuxt to="/life"> Life </n-link>
+            </li>
             <li>
               <!-- login-regiter -->
               <v-btn
                 small
-                style="font-size: 15px; margin-left:15px;"
+                style="font-size: 15px; margin-left: 15px"
                 color="white"
                 nuxt
                 target="_blank"
@@ -123,21 +68,70 @@ export default {
       isActive: false,
       activityItems: [
         { title: "Club", url: "/club" },
-        { title: "Publish", url: "/publish" }
+        { title: "Publish", url: "/publish" },
       ],
       lifeItems: [
         { title: "Daily", url: "/daily" },
         { title: "Review", url: "/review" },
-        { title: "Hobby", url: "/hobby" }
+        { title: "Hobby", url: "/hobby" },
       ],
       attrs: "",
-      on: ""
+      on: "",
+      nav: [
+        {
+          title: "비버의 개발 일지",
+          value: "tech",
+          items: [
+            {
+              title: "Back-end",
+              value: "back-end",
+              child: [
+                { title: "Back-end", value: "back-end" },
+                { title: "Back-end", value: "back-end" },
+                { title: "Back-end", value: "back-end" },
+              ],
+            },
+            {
+              title: "Back-end",
+              value: "back-end",
+              child: [
+                { title: "Back-end", value: "back-end" },
+                { title: "Back-end", value: "back-end" },
+                { title: "Back-end", value: "back-end" },
+              ],
+            },
+            { title: "Back-end", value: "back-end" },
+          ],
+        },
+        {
+          title: "비버의 대회 일지",
+          value: "contest",
+          items: [],
+        },
+        {
+          title: "비버의 프로젝트",
+          value: "project",
+          items: [],
+        },
+        {
+          title: "비버의 활동 일지",
+          value: "activity",
+          items: [],
+        },
+        {
+          title: "비버의 일상 일지",
+          value: "life",
+          items: [],
+        },
+      ],
+      navRoute: "",
+      selectNav: {},
     };
   },
   methods: {
-    toggleClass: function(event) {
+    toggleClass: function (event) {
       this.isActive = !this.isActive;
-    }
-  }
+    },
+  },
 };
 </script>

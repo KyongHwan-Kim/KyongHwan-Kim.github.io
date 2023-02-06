@@ -35,20 +35,16 @@
               <n-link class="nav-link" nuxt to="/project"> Project </n-link>
             </li>
             <li class="nav-item" text>
-              <n-link class="nav-link" nuxt to="/activity">
-                Activity
-              </n-link>
+              <n-link class="nav-link" nuxt to="/activity"> Activity </n-link>
             </li>
             <li class="nav-item" text>
-              <n-link class="nav-link" nuxt to="/basic-components">
-                Life
-              </n-link>
+              <n-link class="nav-link" nuxt to="/life"> Life </n-link>
             </li>
             <li>
               <!-- login-regiter -->
               <v-btn
                 small
-                style="font-size: 15px; margin-left:15px;"
+                style="font-size: 15px; margin-left: 15px"
                 color="white"
                 nuxt
                 target="_blank"
@@ -77,21 +73,21 @@ export default {
       isActive: false,
       activityItems: [
         { title: "Club", url: "/club" },
-        { title: "Publish", url: "/publish" }
+        { title: "Publish", url: "/publish" },
       ],
       lifeItems: [
         { title: "Daily", url: "/daily" },
         { title: "Review", url: "/review" },
-        { title: "Hobby", url: "/hobby" }
+        { title: "Hobby", url: "/hobby" },
       ],
       attrs: "",
-      on: ""
+      on: "",
     };
   },
   methods: {
-    toggleClass: function(event) {
+    toggleClass: function (event) {
       this.isActive = !this.isActive;
-    }
-  }
+    },
+  },
 };
 </script>

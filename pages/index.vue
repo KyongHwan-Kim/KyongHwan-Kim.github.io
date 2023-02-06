@@ -35,9 +35,9 @@ export default {
         {
           hid: "description",
           name: "비버의 개발 일지",
-          content: "안녕하세요 비버입니다. 아니지 저스틴입니다."
-        }
-      ]
+          content: "안녕하세요 비버입니다. 아니지 저스틴입니다.",
+        },
+      ],
     };
   },
 
@@ -45,8 +45,9 @@ export default {
     return {
       divider: {
         title: "Recent Posts",
-        subtitle: "sas"
-      }
+        subtitle:
+          "I think the best learning is to write something that others can easily understand.",
+      },
     };
   },
   components: {
@@ -54,7 +55,8 @@ export default {
     Divider: () => import("@/layouts/sections/Divider"),
     Blog: () => import("@/layouts/sections/Blog"),
     ComingSoon: () => import("@/components/shared/coming-soon/ComingSoon"),
-    AllCustomComponents: () => import("@/components/custom/AllCustomComponents")
-  }
+    AllCustomComponents: () =>
+      import("@/components/custom/AllCustomComponents"),
+  },
 };
 </script>
