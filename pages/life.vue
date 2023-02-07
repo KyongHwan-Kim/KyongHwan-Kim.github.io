@@ -1,7 +1,11 @@
 <template>
   <div>
+    <NavgationDrawer />
     <v-container>
-      <DailyPreview v-if="this.route == 'Life'" />
+      <DailyPreview
+        v-if="this.routeDetail[0] == 'daily'"
+        :category="routeDetail"
+      />
     </v-container>
   </div>
 </template>
@@ -9,21 +13,31 @@
 <script>
 export default {
   name: "Life",
-
+  props: {
+    routeDetail: {
+      type: Array,
+      default: ["daily", "all"],
+    },
+  },
   data() {
     return {
       route: "Life",
-      list: [
-        { value: "Life", text: "Life" },
-        { value: "Think", text: "Think" },
-        { value: "Review", text: "Review" },
-        { value: "Book", text: "Book" },
-        { value: "Wikey", text: "Wikey" },
-      ],
     };
   },
   components: {
     DailyPreview: () => import("@/layouts/sections/life/DailyPreview"),
+    NavgationDrawer: () => import("@/layouts/sections/NavigationDrawer"),
+  },
+  mounted() {},
+  watch: {
+    routeDetail() {
+      console.log(this.routeDetail);
+    },
+  },
+  methods: {
+    changeRoute(route) {
+      this.route = route;
+    },
   },
 };
 </script>

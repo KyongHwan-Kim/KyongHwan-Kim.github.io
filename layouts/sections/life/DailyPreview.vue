@@ -26,15 +26,9 @@
 
         <v-row class="mt-13" justify="center">
           <div v-for="(item, idx) in blogs" :key="idx">
-            <v-col cols="12">
-              <v-card elevation="0" class="blog-card overflow-hidden mb-15">
-                <div class="position-relative mb-15">
-                  <div class="date-badge bg-info-grediant">
-                    {{ item.pubDate._text.split(" ")[2] }}
-                    <span>{{ item.pubDate._text.split(" ")[1] }}</span>
-                  </div>
-                </div>
-                <div>
+            <v-col cols="12" justify="center">
+              <v-card elevation="3" class="blog-card overflow-hidden mb-15">
+                <div style="padding: 20px">
                   <a
                     :href="item.link._text"
                     class="
@@ -77,6 +71,7 @@ import convert from "xml-js";
 
 export default {
   name: "DailyPreview",
+  props: ["category"],
   data() {
     return {
       blogs: [],
@@ -84,13 +79,6 @@ export default {
   },
   mounted() {
     this.getBlogs();
-    for (let blog of this.blogs) {
-      this.$axios.get(blog.link._text).then((html) => {
-        let $ = cheerio.load(html);
-        const data = $("head > meta:nth-child(8)").text();
-        console.log(data);
-      });
-    }
   },
   methods: {
     getBlogs() {
@@ -101,8 +89,16 @@ export default {
         this.blogs = data.rss.channel.item.filter(
           (item) => item.category._cdata === "일상"
         );
+        console.log(this.category);
       });
     },
   },
 };
 </script>
+<style scoped>
+.blog-component {
+  font-family: "Cafe24Oneprettynight";
+  text-decoration-line: none;
+  margin: 20px 0 15px;
+}
+</style>>
