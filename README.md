@@ -1,4 +1,5 @@
 # Next Kit - Nuxt js based Free UI Kit
+
 <h1>
 <a href="https://nextkit-nuxtjs-free-uikit.vercel.app/">Live Demo</a>
 </h1>
@@ -43,7 +44,6 @@ Layouts are a great help when you want to change the look and feel of your Nuxt 
 
 More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/layouts).
 
-
 ### `pages`
 
 This directory contains your application views and routes. Nuxt will read all the `*.vue` files inside this directory and setup Vue Router automatically.
@@ -69,3 +69,8 @@ More information about the usage of this directory in [the documentation](https:
 This directory contains your Vuex store files. Creating a file in this directory automatically activates Vuex.
 
 More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store).
+
+### `Issue`
+
+GitHub Action으로 Nuxt + Nuxt/Vuetify 배포시 module이 없다는 에러 발생.
+원인 : NODE_ENV를 설정하면 안됨. 따라서 API_ENV로 Key Name을 변경.
