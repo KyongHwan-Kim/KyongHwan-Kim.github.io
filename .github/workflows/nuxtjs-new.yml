@@ -53,10 +53,10 @@ jobs:
         with:
           node-version: "16"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
-      - name: Create .env file
-        uses: SpicyPizza/create-envfile@v1.3
-        with:
-          API_ENV: "production"
+      # - name: Create .env file
+      #   uses: SpicyPizza/create-envfile@v1.3
+      #   with:
+      #     API_ENV: "production"
       - name: Setup Pages
         uses: actions/configure-pages@v3
         with:

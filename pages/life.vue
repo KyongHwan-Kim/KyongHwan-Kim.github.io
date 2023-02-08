@@ -9,7 +9,7 @@
 
 <script>
 import convert from "xml-js";
-
+import setting from "@/api/setting.json";
 export default {
   name: "Life",
   data() {
@@ -111,14 +111,14 @@ export default {
       }
     },
     getBlogs() {
-      if (process.env.API_ENV === "development") {
+      if (setting.API_ENV === "development") {
         this.$axios.get("/blog/dolkys123.xml").then((res) => {
           let xml = res.data;
           let json = convert.xml2json(xml, { compact: true });
           let data = JSON.parse(json);
           this.blogs = data.rss.channel.item;
         });
-      } else if (process.env.API_ENV === "production") {
+      } else if (setting.API_ENV === "production") {
         this.$axios
           .get("https://rss.blog.naver.com/dolkys123.xml")
           .then((res) => {
