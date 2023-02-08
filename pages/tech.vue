@@ -1,67 +1,98 @@
 <template>
   <div>
+    <NavgationDrawer
+      :navList="navList"
+      @parentPath="getParentPath"
+      @childPath="getChildPath"
+    />
     <div id="md-html" class="markdown-body">
       <techMd />
     </div>
-    <v-container>
-      <BannerText />
-      <Banner1 />
-      <FormBannerText />
-      <FormBanner1 />
-
-      <FeatureText />
-      <Feature1 />
-      <Feature2 />
-      <Feature3 />
-      <PortfolioText />
-      <Portfolio />
-      <ContactText />
-      <Contact />
-    </v-container>
   </div>
 </template>
 
 <script>
 import techList from "@/data/techList.json";
-import Header from "../layouts/sections/Header.vue";
 
 export default {
-  name: "AllCustomComponents",
+  name: "Tech",
   data() {
     return {
       items: techList,
+      navList: {
+        title: "비버의 개발일지",
+        value: "tech",
+        items: [
+          {
+            title: "Computer Science",
+            value: "computer-science",
+            isOpenChild: true,
+            child: [
+              { title: "2023", value: "2023" },
+              { title: "2022", value: "2022" },
+            ],
+          },
+          {
+            title: "Language",
+            value: "computer-language",
+            isOpenChild: true,
+            child: [
+              { title: "2023", value: "2023" },
+              { title: "2022", value: "2022" },
+            ],
+          },
+          {
+            title: "Back-End",
+            value: "back-end",
+            isOpenChild: true,
+            child: [
+              { title: "2023", value: "2023" },
+              { title: "2022", value: "2022" },
+            ],
+          },
+          {
+            title: "Front-End",
+            value: "front-end",
+            isOpenChild: true,
+            child: [
+              { title: "2023", value: "2023" },
+              { title: "2022", value: "2022" },
+            ],
+          },
+          {
+            title: "Mobile",
+            value: "mobile",
+            isOpenChild: true,
+            child: [
+              { title: "2023", value: "2023" },
+              { title: "2022", value: "2022" },
+            ],
+          },
+          {
+            title: "Big Data",
+            value: "big-data",
+            isOpenChild: true,
+            child: [
+              { title: "2023", value: "2023" },
+              { title: "2022", value: "2022" },
+            ],
+          },
+          {
+            title: "Algorithm",
+            value: "algorithm",
+            isOpenChild: true,
+            child: [
+              { title: "2023", value: "2023" },
+              { title: "2022", value: "2022" },
+            ],
+          },
+        ],
+      },
       // page: techContent
     };
   },
   components: {
-    HeaderText: () => import("@/components/custom/header/HeaderText"),
-    BannerText: () => import("@/components/custom/banner/BannerText"),
-    FeatureText: () => import("@/components/custom/features/FeatureText"),
-    PricingText: () => import("@/components/custom/pricing/PricingText"),
-    TeamText: () => import("@/components/custom/team/TeamText"),
-    ContactText: () => import("@/components/custom/contact/ContactText"),
-    TestimonialText: () =>
-      import("@/components/custom/testimonial/TestimonialText"),
-    C2aText: () => import("@/components/custom/c2a/C2aText"),
-    PortfolioText: () => import("@/components/custom/portfolio/PortfolioText"),
-    FormBannerText: () =>
-      import("@/components/custom/form-banner/FormBannerText"),
-    Header1: () => import("@/components/custom/header/Header1"),
-    Header2: () => import("@/components/custom/header/Header2"),
-    Banner1: () => import("@/components/custom/banner/Banner1"),
-    Banner2: () => import("@/components/custom/banner/Banner2"),
-    Feature1: () => import("@/components/custom/features/Feature1"),
-    Feature2: () => import("@/components/custom/features/Feature2"),
-    Feature3: () => import("@/components/custom/features/Feature3"),
-    FormBanner1: () => import("@/components/custom/form-banner/FormBanner1"),
-    Portfolio: () => import("@/components/custom/portfolio/Portfolio"),
-    Pricing: () => import("@/components/custom/pricing/Pricing"),
-    Team: () => import("@/components/custom/team/Team"),
-    Testimonial: () => import("@/components/custom/testimonial/Testimonial"),
-    Blog: () => import("@/components/custom/blogs/Blog"),
-    C2a1: () => import("@/components/custom/c2a/C2a1"),
-    C2a2: () => import("@/components/custom/c2a/C2a2"),
-    Contact: () => import("@/components/custom/contact/Contact"),
+    NavgationDrawer: () => import("@/layouts/sections/NavigationDrawer"),
   },
 };
 Header;

@@ -15,7 +15,7 @@
     "
   >
     <div class="nav-bar">
-      <v-list dense v-for="item in selectNav.items" :key="item.value">
+      <v-list dense v-for="item in navList.items" :key="item.value">
         <v-list-item-group mandatory>
           <v-list-item @click="changeOpenChild(item.value)">
             <v-icon
@@ -36,12 +36,22 @@
             }}</v-list-item-title>
           </v-list-item>
         </v-list-item-group>
-        <v-list-item-group
-          mandatory
-          v-if="item.child.length > 0 && item.isOpenChild"
-        >
+        <v-list-item-group v-if="item.child.length > 0 && item.isOpenChild">
           <div v-for="child in item.child" :key="child.value">
-            <v-list-item @click="changePage(item.value, child.value)">
+            <v-list-item
+              v-if="child.isSelect"
+              color="#5c9bf4"
+              @click="changePage(item.value, child)"
+            >
+              <v-list-item-title class="nav-level-two">{{
+                child.title
+              }}</v-list-item-title>
+            </v-list-item>
+            <v-list-item
+              v-else
+              color="white"
+              @click="changePage(item.value, child)"
+            >
               <v-list-item-title class="nav-level-two">{{
                 child.title
               }}</v-list-item-title>
@@ -55,78 +65,15 @@
 
 <script>
 export default {
+  props: {
+    navList: {
+      type: Object,
+      default: () => {},
+    },
+  },
   data() {
     return {
       nav: [
-        {
-          title: "비버의 개발일지",
-          value: "tech",
-          items: [
-            {
-              title: "Computer Science",
-              value: "computer-science",
-              isOpenChild: true,
-              child: [
-                { title: "2023", value: "2023" },
-                { title: "2022", value: "2022" },
-              ],
-            },
-            {
-              title: "Language",
-              value: "computer-language",
-              isOpenChild: true,
-              child: [
-                { title: "2023", value: "2023" },
-                { title: "2022", value: "2022" },
-              ],
-            },
-            {
-              title: "Back-End",
-              value: "back-end",
-              isOpenChild: true,
-              child: [
-                { title: "2023", value: "2023" },
-                { title: "2022", value: "2022" },
-              ],
-            },
-            {
-              title: "Front-End",
-              value: "front-end",
-              isOpenChild: true,
-              child: [
-                { title: "2023", value: "2023" },
-                { title: "2022", value: "2022" },
-              ],
-            },
-            {
-              title: "Mobile",
-              value: "mobile",
-              isOpenChild: true,
-              child: [
-                { title: "2023", value: "2023" },
-                { title: "2022", value: "2022" },
-              ],
-            },
-            {
-              title: "Big Data",
-              value: "big-data",
-              isOpenChild: true,
-              child: [
-                { title: "2023", value: "2023" },
-                { title: "2022", value: "2022" },
-              ],
-            },
-            {
-              title: "Algorithm",
-              value: "algorithm",
-              isOpenChild: true,
-              child: [
-                { title: "2023", value: "2023" },
-                { title: "2022", value: "2022" },
-              ],
-            },
-          ],
-        },
         {
           title: "비버의 대회일지",
           value: "contest",
@@ -142,54 +89,6 @@ export default {
           value: "activity",
           items: [],
         },
-        {
-          title: "비버의 일상일지",
-          value: "life",
-          items: [
-            {
-              title: "Daily",
-              value: "daily",
-              isOpenChild: true,
-              child: [
-                { title: "ALL", value: "all" },
-                { title: "2023", value: "2023" },
-                { title: "2022", value: "2022" },
-              ],
-            },
-            {
-              title: "Think About",
-              value: "think",
-              isOpenChild: true,
-              child: [
-                { title: "ALL", value: "all" },
-                { title: "2023", value: "2023" },
-                { title: "2022", value: "2022" },
-              ],
-            },
-            {
-              title: "Book",
-              value: "book",
-              isOpenChild: true,
-              child: [
-                { title: "ALL", value: "all" },
-                { title: "Tech", value: "tech" },
-                { title: "Essay", value: "essay" },
-                { title: "Personal Growth", value: "growth" },
-              ],
-            },
-            {
-              title: "Hobby",
-              value: "hobby",
-              isOpenChild: true,
-              child: [
-                { title: "ALL", value: "all" },
-                { title: "Whiskey", value: "whiskey" },
-                { title: "Cycle", value: "cycle" },
-                { title: "Work Out", value: "work-out" },
-              ],
-            },
-          ],
-        },
       ],
       selectNav: {
         title: "",
@@ -204,19 +103,26 @@ export default {
   },
   methods: {
     changeOpenChild(itemValue) {
-      this.selectNav.items.find((item) => item.value == itemValue).isOpenChild =
-        !this.selectNav.items.find((item) => item.value == itemValue)
-          .isOpenChild;
+      this.navList.items.find((item) => item.value == itemValue).isOpenChild =
+        !this.navList.items.find((item) => item.value == itemValue).isOpenChild;
     },
-    changePage(parentPath, childPath) {
-      this.navDetailItems.push(parentPath);
-      this.navDetailItems.push(childPath);
+    changePage(parentPath, child) {
+      for (let e of this.navList.items) {
+        for (let c of e.child) {
+          c.isSelect = false;
+        }
+      }
+      child.isSelect = true;
+      this.$emit("selectParams", parentPath, child.value);
     },
   },
 };
 </script>
 
 <style>
+::v-deep .v-list-item--active {
+  background-color: #5c9bf4 !important;
+}
 .nav-level-one {
   font-size: 20px !important;
   font-family: "KIMM_Bold";
