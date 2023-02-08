@@ -111,14 +111,14 @@ export default {
       }
     },
     getBlogs() {
-      if (process.env.NODE_ENV === "development") {
+      if (process.env.API_ENV === "development") {
         this.$axios.get("/blog/dolkys123.xml").then((res) => {
           let xml = res.data;
           let json = convert.xml2json(xml, { compact: true });
           let data = JSON.parse(json);
           this.blogs = data.rss.channel.item;
         });
-      } else if (process.env.NODE_ENV === "production") {
+      } else if (process.env.API_ENV === "production") {
         this.$axios
           .get("https://rss.blog.naver.com/dolkys123.xml")
           .then((res) => {
