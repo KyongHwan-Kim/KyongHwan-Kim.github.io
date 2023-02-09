@@ -44,8 +44,7 @@ export default {
   modules: ["@nuxtjs/proxy", "@nuxtjs/axios"],
   axios: {
     proxy: true,
-    proxyHeaders: false,
-    credentials: false
+    proxyHeaders: true
   },
   proxy: {
     "/blog/": {

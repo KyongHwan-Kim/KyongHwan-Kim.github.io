@@ -122,7 +122,9 @@ export default {
         this.$axios
           .get("https://rss.blog.naver.com/dolkys123.xml", {
             headers: {
-              "Access-Control-Allow-Origin": "*",
+              "Access-Control-Allow-Origin": "http://localhost:3000/",
+              "Access-Control-Allow-Methods":
+                "GET,PUT,POST,DELETE,PATCH,OPTIONS",
             },
           })
           .then((res) => {
