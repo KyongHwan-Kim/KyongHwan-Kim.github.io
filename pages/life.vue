@@ -120,7 +120,11 @@ export default {
         });
       } else if (setting.API_ENV === "production") {
         this.$axios
-          .get("https://rss.blog.naver.com/dolkys123.xml")
+          .get("https://rss.blog.naver.com/dolkys123.xml", {
+            headers: {
+              "Access-Control-Allow-Origin": "*",
+            },
+          })
           .then((res) => {
             let xml = res.data;
             let json = convert.xml2json(xml, { compact: true });
